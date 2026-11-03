@@ -80,8 +80,8 @@ img, video { display: block; width: 100%; }
 .film-frame { position: relative; isolation: isolate; width: min(54vw, 49rem); margin-bottom: 13rem; padding: clamp(.55rem, 1.1vw, 1rem); border: 1px solid rgba(255,255,255,.14); border-radius: clamp(1rem, 2.4vw, 2rem); background: rgba(255,255,255,.035); box-shadow: 0 2rem 7rem rgba(0,0,0,.42); }
 .film-frame--right { margin-left: 35vw; }
 .film-frame--left { margin-left: 9vw; }
-.chapter--one .film-frame { --ambient-image: url("assets/momento-02.jpg"); --ambient-color: 255,79,18; }
-.chapter--two .film-frame { --ambient-image: url("assets/momento-03.jpg"); --ambient-color: 255,166,58; border-color: rgba(17,17,15,.14); background: rgba(255,255,255,.22); box-shadow: 0 2rem 7rem rgba(70,45,20,.2); }
+.chapter--one .film-frame { --ambient-image: url("site-alicia/dist/assets/momento-02.jpg"); --ambient-color: 255,79,18; }
+.chapter--two .film-frame { --ambient-image: url("site-alicia/dist/assets/momento-03.jpg"); --ambient-color: 255,166,58; border-color: rgba(17,17,15,.14); background: rgba(255,255,255,.22); box-shadow: 0 2rem 7rem rgba(70,45,20,.2); }
 .film-frame::before { content: ""; position: absolute; z-index: -2; inset: -10%; border-radius: 18%; background: var(--ambient-image) center/cover no-repeat; filter: blur(48px) saturate(1.35); opacity: .28; transform: scale(1.08); transition: opacity 1s ease, transform 2s ease; }
 .film-frame::after { content: ""; position: absolute; z-index: -1; inset: -5%; border-radius: 20%; background: radial-gradient(circle at 50% 45%, rgba(var(--ambient-color),.22), transparent 64%); opacity: .65; pointer-events: none; }
 .film-frame.is-playing::before { opacity: .52; animation: ambient-breathe 7s ease-in-out infinite alternate; }
