@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#efede7">
+  <meta name="description" content="Uma dedicatória em movimento para Alicia.">
+  <title>Alicia — em todos os momentos</title>
+  <link rel="preload" href="assets/momento-01.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="loader" aria-hidden="true">
+    <div class="loader__mark">A<span>+</span>L</div>
+    <div class="loader__line"><i></i></div>
+    <p>carregando memórias</p>
+  </div>
+
+  <div class="noise" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <header class="topbar">
+    <a class="monogram" href="#inicio" aria-label="Voltar ao início">A<span>/</span>L</a>
+    <p class="topbar__note">uma dedicatória<br>em movimento</p>
+    <div class="topbar__actions">
+      <button class="sound-toggle" type="button" aria-pressed="false">
+        <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="sound-label">som off</span>
+      </button>
+      <a href="#trilha">trilha ↘</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-label="Abertura">
+      <div class="hero__media">
+        <video class="memory-video" muted loop playsinline preload="metadata" poster="assets/momento-01.jpg">
+          <source src="assets/momento-01.mp4" type="video/mp4">
+        </video>
+        <div class="hero__wash"></div>
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Para Alicia, com amor.</p>
+        <h1 class="reveal">todos os<br><em>momentos</em></h1>
+        <div class="hero__footer reveal">
+          <p>algumas coisas passam.<br>outras viram parte da gente.</p>
+          <a href="#capitulo-um">começar <span>↓</span></a>
+        </div>
+      </div>
+      <div class="stamp" aria-hidden="true">01<br><small>∞</small></div>
+    </section>
+
+    <section class="manifesto section-pad">
+      <div class="manifesto__index reveal">[ uma pequena coleção ]</div>
+      <div class="manifesto__text">
+        <p class="reveal">Não é sobre ter registro de tudo.</p>
+        <p class="reveal">É sobre olhar para qualquer segundo nosso e pensar:</p>
+        <p class="reveal accent-line">eu viveria isso outra vez.</p>
+      </div>
+      <p class="margin-note reveal">para os dias barulhentos,<br>os silêncios confortáveis<br>e tudo que existe no meio.</p>
+    </section>
+
+    <section class="chapter chapter--one" id="capitulo-um">
+      <div class="chapter__head section-pad">
+        <p class="chapter__number reveal">I — 01</p>
+        <h2 class="reveal">quando o mundo<br>fica <i>mais leve</i></h2>
+        <p class="chapter__caption reveal">Você transforma instantes comuns<br>em lugares onde eu quero ficar.</p>
+      </div>
+      <div class="film-frame film-frame--right reveal-media">
+        <video class="memory-video" muted loop playsinline preload="metadata" poster="assets/momento-02.jpg">
+          <source src="assets/momento-02.mp4" type="video/mp4">
+        </video>
+        <button class="video-control" type="button" aria-label="Pausar vídeo"><span>pause</span><b>Ⅱ</b></button>
+        <div class="film-meta"><span>memória 02</span><span>12 segundos para sempre</span></div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div>VOCÊ &amp; EU — VOCÊ &amp; EU — VOCÊ &amp; EU — VOCÊ &amp; EU —&nbsp;</div>
+        <div>VOCÊ &amp; EU — VOCÊ &amp; EU — VOCÊ &amp; EU — VOCÊ &amp; EU —&nbsp;</div>
+      </div>
+    </section>
+
+    <section class="interlude">
+      <p class="interlude__small reveal">se o tempo tem um som</p>
+      <blockquote class="reveal">o meu favorito<br>é a sua risada<br><em>no meio dele.</em></blockquote>
+      <div class="orbit" aria-hidden="true"><span> </span></div>
+    </section>
+
+    <section class="chapter chapter--two" id="capitulo-dois">
+      <div class="chapter__head chapter__head--split section-pad">
+        <p class="chapter__number reveal">II — 02</p>
+        <h2 class="reveal">o jeito que<br><i>a vida acontece</i></h2>
+        <p class="chapter__caption reveal">Sem roteiro. Sem pose.<br>Só a gente sendo a gente.</p>
+      </div>
+      <div class="film-frame film-frame--left reveal-media">
+        <video class="memory-video" muted loop playsinline preload="metadata" poster="assets/momento-03.jpg">
+          <source src="assets/momento-03.mp4" type="video/mp4">
+        </video>
+        <button class="video-control" type="button" aria-label="Pausar vídeo"><span>pause</span><b>Ⅱ</b></button>
+        <div class="film-meta"><span>memória 03</span><span>sem cortes no sentimento</span></div>
+      </div>
+      <p class="side-type" aria-hidden="true">ALICIA / ALICIA / ALICIA</p>
+    </section>
+
+    <section class="track" id="trilha">
+      <div class="track__visual reveal-media">
+        <img src="assets/momento-01.jpg" alt="Um quadro de uma memória de Alicia e LC">
+        <div class="track__disc" aria-hidden="true"><i></i></div>
+      </div>
+      <div class="track__copy section-pad">
+        <p class="chapter__number reveal">III — a trilha</p>
+        <h2 class="reveal">Nights</h2>
+        <p class="track__artist reveal">Frank Ocean</p>
+        <p class="track__note reveal">Uma música para atravessar a noite<br>e chegar do outro lado com você.</p>
+        <iframe class="spotify-embed reveal" title="Nights, de Frank Ocean, no Spotify" src="https://open.spotify.com/embed/track/7eqoqGkKwgOaWNNHx90uEZ?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <a class="spotify-link reveal" href="https://open.spotify.com/track/7eqoqGkKwgOaWNNHx90uEZ" target="_blank" rel="noopener noreferrer">abrir no Spotify <span>↗</span></a>
+      </div>
+    </section>
+
+    <section class="finale">
+      <div class="finale__backdrop" aria-hidden="true"></div>
+      <div class="finale__copy">
+        <p class="eyebrow reveal">um lembrete, caso o tempo corra:</p>
+        <h2 class="reveal">em qualquer versão<br>da vida, <i>eu escolheria</i><br>viver ela com você.</h2>
+        <p class="signature reveal">com amor, <span>LC</span></p>
+        <a class="replay reveal" href="#inicio">ver tudo outra vez ↑</a>
+      </div>
+      <p class="finale__foot">feito de memória, carinho &amp; três pequenos filmes</p>
+    </section>
+  </main>
+
+  <div class="cursor" aria-hidden="true"><span>ver</span></div>
+  <script src="script.js"></script>
+</body>
+</html>
