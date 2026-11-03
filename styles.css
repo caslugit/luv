@@ -49,7 +49,8 @@ img, video { display: block; width: 100%; }
 .section-pad { padding-left: var(--pad); padding-right: var(--pad); }
 .hero { position: relative; min-height: 100svh; overflow: hidden; color: var(--paper); background: #161613; }
 .hero__media { position: absolute; inset: 0; }
-.hero__media video { height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); transform: scale(1.02); }
+.hero__media video { height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06); transform: scale(1.02); transition: filter 1.2s ease; }
+.hero:hover .hero__media video { filter: grayscale(.82) contrast(1.08) saturate(.9); }
 .hero__wash { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,7,6,.7) 0%, rgba(7,7,6,.12) 58%, rgba(7,7,6,.42) 100%), linear-gradient(0deg, rgba(7,7,6,.55), transparent 45%); }
 .hero__copy { position: relative; z-index: 2; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 9rem var(--pad) 2.3rem; }
 .eyebrow { margin: 0 0 1rem; font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
@@ -76,15 +77,23 @@ img, video { display: block; width: 100%; }
 .chapter h2 { margin: 0; font-size: clamp(3.6rem, 9vw, 10rem); line-height: .78; letter-spacing: -.085em; text-transform: uppercase; }
 .chapter h2 i { color: var(--orange); font-family: var(--serif); font-size: .72em; font-weight: 400; text-transform: lowercase; }
 .chapter__caption { align-self: end; margin: 3rem 0 0; font-family: var(--serif); font-size: clamp(.95rem, 1.4vw, 1.25rem); font-style: italic; line-height: 1.4; }
-.film-frame { position: relative; width: min(54vw, 49rem); margin-bottom: 13rem; }
+.film-frame { position: relative; isolation: isolate; width: min(54vw, 49rem); margin-bottom: 13rem; padding: clamp(.55rem, 1.1vw, 1rem); border: 1px solid rgba(255,255,255,.14); border-radius: clamp(1rem, 2.4vw, 2rem); background: rgba(255,255,255,.035); box-shadow: 0 2rem 7rem rgba(0,0,0,.42); }
 .film-frame--right { margin-left: 35vw; }
 .film-frame--left { margin-left: 9vw; }
-.film-frame video { aspect-ratio: 9/16; max-height: 86vh; object-fit: cover; filter: saturate(.86) contrast(1.03); background: #000; }
+.chapter--one .film-frame { --ambient-image: url("assets/momento-02.jpg"); --ambient-color: 255,79,18; }
+.chapter--two .film-frame { --ambient-image: url("assets/momento-03.jpg"); --ambient-color: 255,166,58; border-color: rgba(17,17,15,.14); background: rgba(255,255,255,.22); box-shadow: 0 2rem 7rem rgba(70,45,20,.2); }
+.film-frame::before { content: ""; position: absolute; z-index: -2; inset: -10%; border-radius: 18%; background: var(--ambient-image) center/cover no-repeat; filter: blur(48px) saturate(1.35); opacity: .28; transform: scale(1.08); transition: opacity 1s ease, transform 2s ease; }
+.film-frame::after { content: ""; position: absolute; z-index: -1; inset: -5%; border-radius: 20%; background: radial-gradient(circle at 50% 45%, rgba(var(--ambient-color),.22), transparent 64%); opacity: .65; pointer-events: none; }
+.film-frame.is-playing::before { opacity: .52; animation: ambient-breathe 7s ease-in-out infinite alternate; }
+.film-frame video { position: relative; z-index: 1; aspect-ratio: 9/16; max-height: 82vh; object-fit: cover; border-radius: clamp(.65rem, 1.8vw, 1.35rem); filter: saturate(.9) contrast(1.045); background: #000; box-shadow: 0 1.2rem 3.5rem rgba(0,0,0,.28); transform: translateZ(0); transform-origin: center; }
+.film-frame.is-playing video { animation: lens-drift 12s ease-in-out infinite alternate; }
+@keyframes ambient-breathe { from { transform: scale(1.05) translate3d(-1%,1%,0); filter: blur(46px) saturate(1.2); } to { transform: scale(1.14) translate3d(2%,-2%,0); filter: blur(58px) saturate(1.5); } }
+@keyframes lens-drift { from { transform: scale(1.001) translate3d(0,0,0); } to { transform: scale(1.018) translate3d(0,-.35%,0); } }
 .video-control { position: absolute; right: 1rem; bottom: 3.3rem; display: grid; width: 3.5rem; height: 3.5rem; border: 0; border-radius: 50%; place-items: center; color: var(--ink); background: var(--acid); cursor: pointer; }
 .video-control span { position: absolute; opacity: 0; font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; transform: translateY(-2.8rem); transition: .25s; }
 .video-control:hover span { opacity: 1; }
 .video-control b { font-size: .8rem; }
-.film-meta { display: flex; justify-content: space-between; padding-top: .7rem; border-top: 1px solid rgba(255,255,255,.3); margin-top: .7rem; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
+.film-meta { position: relative; z-index: 3; display: flex; justify-content: space-between; padding: .7rem .25rem 0; border-top: 1px solid rgba(255,255,255,.3); margin-top: .7rem; font-size: .58rem; letter-spacing: .12em; text-transform: uppercase; }
 .ticker { display: flex; position: absolute; bottom: 4rem; width: max-content; color: var(--orange); font-size: clamp(3rem, 8vw, 8rem); font-weight: 900; letter-spacing: -.05em; white-space: nowrap; animation: ticker 20s linear infinite; }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
@@ -153,6 +162,7 @@ img, video { display: block; width: 100%; }
   .film-frame { width: 82vw; }
   .film-frame--right { margin-left: 12vw; }
   .film-frame--left { margin-left: 6vw; }
+  .film-frame::before { inset: -6%; filter: blur(32px) saturate(1.25); }
   .interlude blockquote { font-size: clamp(3.1rem, 16vw, 6rem); }
   .track { grid-template-columns: 1fr; }
   .track__visual { min-height: 65vh; }

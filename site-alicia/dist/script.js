@@ -7,6 +7,26 @@ const soundButton = document.querySelector('.sound-toggle');
 const soundLabel = document.querySelector('.sound-label');
 const cursor = document.querySelector('.cursor');
 let soundEnabled = false;
+let mediaFrame = 0;
+
+function setVideoPlayback(video, shouldPlay) {
+  const frame = video.closest('.film-frame');
+  if (shouldPlay && video.paused) {
+    video.muted = !soundEnabled;
+    video.play().then(() => frame?.classList.add('is-playing')).catch(() => {});
+  } else if (!shouldPlay && !video.paused) {
+    video.pause();
+    frame?.classList.remove('is-playing');
+  }
+}
+
+function syncVisibleVideos() {
+  videos.forEach((video) => {
+    const rect = video.getBoundingClientRect();
+    const visible = Math.max(0, Math.min(rect.bottom, innerHeight) - Math.max(rect.top, 0));
+    setVideoPlayback(video, rect.height > 0 && visible / rect.height > .14);
+  });
+}
 
 function dismissLoader() {
   loader.classList.add('is-gone');
@@ -32,16 +52,20 @@ document.querySelectorAll('.reveal, .reveal-media').forEach((el, index) => {
 
 const videoObserver = new IntersectionObserver((entries) => {
   entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
-    if (isIntersecting && intersectionRatio > .38) {
-      target.muted = !soundEnabled;
-      target.play().catch(() => {});
+    if (isIntersecting && intersectionRatio > .14) {
+      setVideoPlayback(target, true);
     } else {
-      target.pause();
+      setVideoPlayback(target, false);
     }
   });
-}, { threshold: [0, .38, .72] });
+}, { threshold: [0, .14, .5] });
 
-videos.forEach((video) => videoObserver.observe(video));
+videos.forEach((video) => {
+  const frame = video.closest('.film-frame');
+  video.addEventListener('play', () => frame?.classList.add('is-playing'));
+  video.addEventListener('pause', () => frame?.classList.remove('is-playing'));
+  videoObserver.observe(video);
+});
 
 soundButton.addEventListener('click', () => {
   soundEnabled = !soundEnabled;
@@ -54,12 +78,13 @@ document.querySelectorAll('.video-control').forEach((button) => {
   const video = button.parentElement.querySelector('video');
   button.addEventListener('click', () => {
     if (video.paused) {
-      video.play().catch(() => {});
+      video.play().then(() => button.parentElement.classList.add('is-playing')).catch(() => {});
       button.querySelector('span').textContent = 'pause';
       button.querySelector('b').textContent = 'Ⅱ';
       button.setAttribute('aria-label', 'Pausar vídeo');
     } else {
       video.pause();
+      button.parentElement.classList.remove('is-playing');
       button.querySelector('span').textContent = 'play';
       button.querySelector('b').textContent = '▶';
       button.setAttribute('aria-label', 'Reproduzir vídeo');
@@ -76,10 +101,14 @@ function onScroll() {
   if (heroVideo && scrollY < innerHeight * 1.2 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     heroVideo.style.transform = `scale(1.02) translateY(${scrollY * .08}px)`;
   }
+
+  cancelAnimationFrame(mediaFrame);
+  mediaFrame = requestAnimationFrame(syncVisibleVideos);
 }
 
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
+setTimeout(syncVisibleVideos, 900);
 
 if (matchMedia('(pointer: fine)').matches) {
   addEventListener('mousemove', (event) => {
