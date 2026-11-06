@@ -7,9 +7,30 @@
   <meta name="description" content="Uma dedicatória em movimento para Alicia.">
   <title>Alicia — em todos os momentos</title>
   <link rel="preload" href="site-alicia/dist/assets/momento-01.jpg" as="image">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
+  <section class="entry-gate" role="dialog" aria-modal="true" aria-labelledby="entry-title">
+    <div class="entry-gate__halo" aria-hidden="true"></div>
+    <div class="entry-gate__content">
+      <p class="entry-gate__eyebrow">para Alicia — antes de tudo</p>
+      <h2 id="entry-title">essa história<br>tem uma <i>trilha.</i></h2>
+      <p class="entry-gate__note">dê play em Nights e entre — a música continua com você.</p>
+      <button class="entry-gate__music" type="button">
+        <span>já dei play — entrar</span>
+        <b aria-hidden="true"><i></i><i></i><i></i></b>
+      </button>
+      <button class="entry-gate__silent" type="button">entrar em silêncio →</button>
+      <p class="entry-gate__status">use o player oficial logo abaixo</p>
+    </div>
+    <p class="entry-gate__credit">Nights — Frank Ocean</p>
+  </section>
+
+  <aside class="music-dock" aria-label="Trilha sonora do site">
+    <p><span>Nights</span> — Frank Ocean</p>
+    <iframe title="Nights, de Frank Ocean, no Spotify" src="https://open.spotify.com/embed/track/7eqoqGkKwgOaWNNHx90uEZ?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager"></iframe>
+  </aside>
+
   <div class="loader" aria-hidden="true">
     <div class="loader__mark">A<span>+</span>L</div>
     <div class="loader__line"><i></i></div>
@@ -25,7 +46,7 @@
     <div class="topbar__actions">
       <button class="sound-toggle" type="button" aria-pressed="false">
         <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="sound-label">som off</span>
+        <span class="sound-label">vídeos off</span>
       </button>
       <a href="#trilha">trilha ↘</a>
     </div>
@@ -111,24 +132,24 @@
         <h2 class="reveal">Nights</h2>
         <p class="track__artist reveal">Frank Ocean</p>
         <p class="track__note reveal">Uma música para atravessar a noite<br>e chegar do outro lado com você.</p>
-        <iframe class="spotify-embed reveal" title="Nights, de Frank Ocean, no Spotify" src="https://open.spotify.com/embed/track/7eqoqGkKwgOaWNNHx90uEZ?utm_source=generator&theme=0" width="100%" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <p class="spotify-embed track__player-note reveal">a trilha continua no player fixo ↘</p>
         <a class="spotify-link reveal" href="https://open.spotify.com/track/7eqoqGkKwgOaWNNHx90uEZ" target="_blank" rel="noopener noreferrer">abrir no Spotify <span>↗</span></a>
       </div>
     </section>
 
-    <section class="finale">
+    <section class="finale" id="encerramento" aria-label="Encerramento">
       <div class="finale__backdrop" aria-hidden="true"></div>
       <div class="finale__copy">
-        <p class="eyebrow reveal">um lembrete, caso o tempo corra:</p>
-        <h2 class="reveal">em qualquer versão<br>da vida, <i>eu escolheria</i><br>viver ela com você.</h2>
-        <p class="signature reveal">com amor, <span>LC</span></p>
-        <a class="replay reveal" href="#inicio">ver tudo outra vez ↑</a>
+        <p class="finale__index reveal">03 / ∞</p>
+        <div class="finale__mark reveal" aria-hidden="true">A<span>/</span>L</div>
+        <p class="finale__label reveal">fim do lado a</p>
+        <a class="replay reveal" href="#inicio">rever desde o início <span>↑</span></a>
       </div>
-      <p class="finale__foot">feito de memória, carinho &amp; três pequenos filmes</p>
+      <p class="finale__foot">Alicia × LC — arquivo 001</p>
     </section>
   </main>
 
   <div class="cursor" aria-hidden="true"><span>ver</span></div>
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

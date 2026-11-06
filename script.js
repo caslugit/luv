@@ -6,8 +6,22 @@ const progress = document.querySelector('.progress span');
 const soundButton = document.querySelector('.sound-toggle');
 const soundLabel = document.querySelector('.sound-label');
 const cursor = document.querySelector('.cursor');
+const entryGate = document.querySelector('.entry-gate');
+const enterWithMusic = document.querySelector('.entry-gate__music');
+const enterSilent = document.querySelector('.entry-gate__silent');
 let soundEnabled = false;
 let mediaFrame = 0;
+
+document.body.classList.add('gate-open');
+
+function enterExperience(withMusic) {
+  document.body.classList.toggle('music-silent', !withMusic);
+  entryGate.classList.add('is-gone');
+  document.body.classList.remove('gate-open');
+}
+
+enterWithMusic.addEventListener('click', () => enterExperience(true));
+enterSilent.addEventListener('click', () => enterExperience(false));
 
 function setVideoPlayback(video, shouldPlay) {
   const frame = video.closest('.film-frame');
@@ -70,7 +84,7 @@ videos.forEach((video) => {
 soundButton.addEventListener('click', () => {
   soundEnabled = !soundEnabled;
   soundButton.setAttribute('aria-pressed', String(soundEnabled));
-  soundLabel.textContent = soundEnabled ? 'som on' : 'som off';
+  soundLabel.textContent = soundEnabled ? 'vídeos on' : 'vídeos off';
   videos.forEach((video) => { video.muted = !soundEnabled; });
 });
 
