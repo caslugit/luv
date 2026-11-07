@@ -223,6 +223,18 @@ img, video { display: block; width: 100%; }
   .cursor { display: none; }
 }
 
+@media (max-height: 700px) {
+  .entry-gate__content { padding: .75rem 1.25rem; transform: translateY(-11vh); }
+  .entry-gate__eyebrow { margin-bottom: .6rem; }
+  .entry-gate h2 { font-size: clamp(3rem, 14vh, 5rem); line-height: .78; }
+  .entry-gate__note { margin: .85rem auto; font-size: .82rem; }
+  .entry-gate__music { min-height: 3rem; }
+  .entry-gate__silent { margin-top: .55rem; }
+  .entry-gate__status, .entry-gate__credit, .gate-open .music-dock > p { display: none; }
+  .gate-open .music-dock { bottom: .45rem; width: min(88vw, 26rem); padding: .35rem; }
+  .gate-open .music-dock iframe { height: 80px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
